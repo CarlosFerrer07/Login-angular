@@ -3,12 +3,12 @@ import { CommonModule } from '@angular/common';
 import { RouterModule } from '@angular/router';
 
 @Component({
-  selector: 'app-login',
+  selector: 'app-nav',
   standalone: true,
   imports: [CommonModule,RouterModule],
-  templateUrl: './login.component.html',
-  styleUrl: './login.component.css'
+  templateUrl: './nav.component.html',
+  styleUrl: './nav.component.css'
 })
-export class LoginComponent {
+export class NavComponent {
   userLoginOn:boolean=false;
 }
