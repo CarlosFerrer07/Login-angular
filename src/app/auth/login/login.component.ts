@@ -2,6 +2,8 @@ import { Component } from '@angular/core';
 import { ReactiveFormsModule,FormBuilder ,Validators} from '@angular/forms';
 import { Router } from '@angular/router';
 import { CommonModule } from '@angular/common';
+import { LoginService } from '../../services/auth/login.service';
+import { LoginRequest } from '../../services/auth/loginRequest';
 
 @Component({
   selector: 'app-login',
@@ -12,7 +14,7 @@ import { CommonModule } from '@angular/common';
 })
 export class LoginComponent {
 
-  constructor(private formBuilder: FormBuilder, private router:Router) {}
+  constructor(private formBuilder: FormBuilder, private router:Router,private loginService:LoginService) {}
 
   loginForm = this.formBuilder.group({
     email : ['carlosferrermartinez11@gmail.com',[Validators.required,Validators.email]],
@@ -29,7 +31,7 @@ export class LoginComponent {
 
   login () {
     if (this.loginForm.valid) {
-      console.log('Llamar al login');
+      this.loginService.login(this.loginForm.value as LoginRequest);
       this.router.navigateByUrl('/inicio');
       this.loginForm.reset();
     }else {
